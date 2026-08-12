@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: product_auth_test
+    ports:
+      - 5432:5432
+    volumes:
+      - db_data:/var/lib/postgresql/data
+  app:
+    build: .
+    environment:
+      DATABASE_URL: "postgresql://test:test@db:5432/product_auth_test?schema=public"
+      PORT: 3000
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+volumes:
+  db_data:

@@ -1,0 +1,8 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Run tests before commit
+npm test --silent || {
+  echo "Tests failed — aborting commit."
+  exit 1
+}

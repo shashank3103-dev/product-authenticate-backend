@@ -1,0 +1,45 @@
+{
+  "name": "product-auth-backend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "ts-node-dev --transpile-only --respawn src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:generate": "prisma generate",
+    "test": "jest --passWithNoTests --runInBand",
+    "test:watch": "jest --watch",
+    "docker:build": "docker build -t product-auth-backend .",
+    "docker:up": "docker-compose up --build",
+    "docker:down": "docker-compose down",
+    "prepare": "husky install"
+  },
+  "description": "Scaffold for a Node.js + Express + TypeScript backend with Postgres (Prisma) and Zod validation.",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^7.9.1",
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "pg": "^8.23.0",
+    "winston": "^3.19.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/express": "^5.0.6",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^26.2.0",
+    "@types/supertest": "^7.2.1",
+    "jest": "^30.4.2",
+    "prisma": "^7.9.1",
+    "supertest": "^7.2.2",
+    "ts-jest": "^29.4.12",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.9.5"
+  }
+}
