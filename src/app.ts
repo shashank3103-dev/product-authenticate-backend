@@ -17,6 +17,15 @@ app.use((req, _res, next) => {
 
 app.use('/api/auth', authRouter);
 
+import verifyRouter from './routes/verify';
+import adminProductsRouter from './routes/adminProducts';
+
+// Public verification endpoint
+app.use('/api/v1/verify', verifyRouter);
+
+// Admin product management (protected) — router enforces admin auth
+app.use('/api/v1/admin/products', adminProductsRouter);
+
 app.get('/health', (req, res) => {
   logger.info('health check');
   return res.json({ status: 'ok' });
